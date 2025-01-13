@@ -1,4 +1,4 @@
-sudo docker-compose up | (
+docker-compose up | (
 npm install
 npm run build
 npx prisma generate

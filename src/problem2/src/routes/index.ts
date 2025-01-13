@@ -1,17 +1,11 @@
 import express, { Request, Response } from 'express';
 import { healthCheck } from '../handlers/healthcheck';
-
-import bodyParser from 'body-parser';
 import prisma from '../client';
+
 const router = express.Router();
 
 /* GET home page. */
 router.get('/', healthCheck);
-
-const app = express();
-
-// Middleware
-app.use(bodyParser.json());
 
 // Routes
 
@@ -30,7 +24,6 @@ router.post('/resources', async (req: Request, res: Response) => {
 router.get('/resources', async (req: Request, res: Response) => {
     try {
         const { name } = req.query;
-        console.log("🚀 ~ router.get ~ name:", name)
         const whereClause: any = {};
 
         if (name) {
